@@ -1,0 +1,377 @@
+{
+    "openapi" : "3.0.0",
+    "info" : {
+        "title" : "Acsoftware",
+        "version" : "1.0.0"
+    },
+    "servers" : [ {
+        "url" : "http://localhost:8989"
+    } ],
+    "tags" : [ {
+        "name" : "Todo"
+    } ],
+    "paths" : {
+        "/api/todo" : {
+            "get" : {
+                "tags" : [ "Todo" ],
+                "summary" : "List All",
+                "parameters" : [ {
+                    "name" : "Accept",
+                    "in" : "header",
+                    "schema" : {
+                        "type" : "string"
+                    },
+                    "example" : "application/json"
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Successful response",
+                        "content" : {
+                            "application/json" : {
+                                "schema" : {
+                                    "type" : "array",
+                                    "items" : {
+                                        "$ref" : "#/components/schemas/listAll"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401" : {
+                        "description" : "Unauthenticated."
+                    },
+                    "422" : {
+                        "description" : "The EMAIL field is mandatory. (and 1 more error)"
+                    }
+                }
+            },
+            "post" : {
+                "tags" : [ "Todo" ],
+                "summary" : "Create Todo",
+                "requestBody" : {
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type" : "object",
+                                "example" : {
+                                    "name" : "Teste Task 02",
+                                    "description" : "Description Task 02",
+                                    "status" : "Y"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters" : [ {
+                    "name" : "Accept",
+                    "in" : "header",
+                    "schema" : {
+                        "type" : "string"
+                    },
+                    "example" : "application/json"
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Successful response",
+                        "content" : {
+                            "application/json" : {
+                                "schema" : {
+                                    "type" : "array",
+                                    "items" : {
+                                        "$ref" : "#/components/schemas/dataTodo"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401" : {
+                        "description" : "Unauthenticated."
+                    },
+                    "422" : {
+                        "description" : "The EMAIL field is mandatory. (and 1 more error)"
+                    }
+                }
+            }
+        },
+        "/api/todo/1" : {
+            "get" : {
+                "tags" : [ "Todo" ],
+                "summary" : "Show 1 Todo",
+                "parameters" : [ {
+                    "name" : "Accept",
+                    "in" : "header",
+                    "schema" : {
+                        "type" : "string"
+                    },
+                    "example" : "application/json"
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Successful response",
+                        "content" : {
+                            "application/json" : {
+                                "schema" : {
+                                    "type" : "array",
+                                    "items" : {
+                                        "$ref" : "#/components/schemas/dataTodo"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401" : {
+                        "description" : "Unauthenticated."
+                    },
+                    "422" : {
+                        "description" : "The EMAIL field is mandatory. (and 1 more error)"
+                    }
+                }
+            },
+            "put" : {
+                "tags" : [ "Todo" ],
+                "summary" : "Update Todo",
+                "requestBody" : {
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type" : "object",
+                                "example" : {
+                                    "name" : "Task 01 - Updated",
+                                    "description" : "Description 01 - Updated"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters" : [ {
+                    "name" : "Accept",
+                    "in" : "header",
+                    "schema" : {
+                        "type" : "string"
+                    },
+                    "example" : "application/json"
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Successful response",
+                        "content" : {
+                            "application/json" : {
+                                "schema" : {
+                                    "type" : "array",
+                                    "items" : {
+                                        "$ref" : "#/components/schemas/dataTodo"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401" : {
+                        "description" : "Unauthenticated."
+                    },
+                    "422" : {
+                        "description" : "The EMAIL field is mandatory. (and 1 more error)"
+                    }
+                }
+            },
+            "delete" : {
+                "tags" : [ "Todo" ],
+                "summary" : "Delete 1 Todo",
+                "parameters" : [ {
+                    "name" : "Accept",
+                    "in" : "header",
+                    "schema" : {
+                        "type" : "string"
+                    },
+                    "example" : "application/json"
+                } ],
+                "responses" : {
+                    "204" : {
+                        "description" : "No content"
+                    },
+                    "401" : {
+                        "description" : "Unauthenticated."
+                    }
+                }
+            }
+        },
+        "/api/login" : {
+            "post" : {
+                "tags" : [ "Login" ],
+                "summary" : "Login",
+                "requestBody" : {
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type" : "object",
+                                "example" : {
+                                    "email" : "fernando.gobetti@hotmail.com.br",
+                                    "password" : "minhasenhaforte"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters" : [ {
+                    "name" : "Accept",
+                    "in" : "header",
+                    "schema" : {
+                        "type" : "string"
+                    },
+                    "example" : "application/json"
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Successful response",
+                        "content" : {
+                            "application/json" : {
+                                "schema" : {
+                                    "type" : "object",
+                                    "properties" : {
+                                        "message" : {
+                                            "type" : "string",
+                                            "example" : "Authorized"
+                                        },
+                                        "token" : {
+                                            "type" : "string",
+                                            "example" : "5|qZJFbxUpxs0N87L4NBfIzeKxAc0zATLO1wyKHGnF3ba467de"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "422" : {
+                        "description" : "The EMAIL field is mandatory. (and 1 more error)"
+                    }
+                }
+            }
+        },
+        "/api/register" : {
+            "post" : {
+                "tags" : [ "Register" ],
+                "summary" : "Register",
+                "requestBody" : {
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type" : "object",
+                                "example" : {
+                                    "name" : "Fernando Gobetti",
+                                    "email" : "fernando.gobetti@hotmail.com.br",
+                                    "password" : "minhasenhaforte"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters" : [ {
+                    "name" : "Accept",
+                    "in" : "header",
+                    "schema" : {
+                        "type" : "string"
+                    },
+                    "example" : "application/json"
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Successful response",
+                        "content" : {
+                            "application/json" : {
+                                "schema" : {
+                                    "type" : "object",
+                                    "properties" : {
+                                        "message" : {
+                                            "type" : "string",
+                                            "example" : "Registered"
+                                        },
+                                        "token" : {
+                                            "type" : "string",
+                                            "example" : "5|qZJFbxUpxs0N87L4NBfIzeKxAc0zATLO1wyKHGnF3ba467de"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "422" : {
+                        "description" : "The EMAIL field is mandatory. (and 1 more error)"
+                    }
+                }
+            }
+        }
+    },
+    "components" : {
+        "schemas" : {
+            "listAll" : {
+                "type" : "object",
+                "required" : [ "data", "meta" ],
+                "properties" : {
+                    "data" : {
+                        "$ref" : "#/components/schemas/dataTodo"
+                    },
+                    "meta" : {
+                        "$ref" : "#/components/schemas/metaTodo"
+                    }
+                }
+            },
+            "dataTodo" : {
+                "properties" : {
+                    "id" : {
+                        "type" : "integer",
+                        "example" : "1"
+                    },
+                    "name" : {
+                        "type" : "string",
+                        "example" : "Test Task 01"
+                    },
+                    "description" : {
+                        "type" : "string",
+                        "example" : "Test Task 01 - Description"
+                    },
+                    "status" : {
+                        "type" : "string",
+                        "example" : "Y"
+                    },
+                    "created_at" : {
+                        "type" : "string",
+                        "example" : "2024-04-24T18:35:03.000000Z"
+                    },
+                    "updated_at" : {
+                        "type" : "string",
+                        "example" : "2024-04-24T18:35:03.000000Z"
+                    }
+                },
+                "type" : "object"
+            },
+            "metaTodo" : {
+                "properties" : {
+                    "total" : {
+                        "type" : "integer",
+                        "example" : "1"
+                    },
+                    "is_first_page" : {
+                        "type" : "boolean",
+                        "example" : true
+                    },
+                    "is_last_page" : {
+                        "type" : "boolean",
+                        "example" : true
+                    },
+                    "current_page" : {
+                        "type" : "integer",
+                        "example" : "1"
+                    },
+                    "next_page" : {
+                        "type" : "integer",
+                        "example" : "1"
+                    },
+                    "previous_page" : {
+                        "type" : "integer",
+                        "example" : "1"
+                    }
+                },
+                "type" : "object"
+            }
+        }
+    }
+}
