@@ -31,7 +31,7 @@ Clone Repository
 git clone -b main https://github.com/FernandoGobetti/app-acsoftware.git app-acsoftware
 ```
 ```bash
-cd app-buzzvel
+cd app-acsoftware
 ```
 
 Builds, (re)creates, starts, and attaches to containers for a service.
